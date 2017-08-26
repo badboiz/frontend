@@ -1,31 +1,10 @@
 import React from 'react';
+import LazyImage from '../LazyImage/LazyImage';
 import './ListingCard.css';
-
-class LazyImage extends React.PureComponent {
-  state = { loaded: false };
-
-  componentDidMount() {
-    this.image = new Image();
-
-    this.image.onload = () =>
-      this.setState({ loaded: true });
-
-    this.image.src = this.props.src;
-  }
-
-  render() {
-    return (
-      <div 
-        className={`ListingCard__image ${this.state.loaded && "loaded"}`} 
-        style={{ backgroundImage: `url(${this.props.src})` }} 
-       />
-    )
-  }
-}
 
 const ListingCard = ({ listing: { distance, image, title, price } }) =>
   <div className="ListingCard__container">
-    <LazyImage src={image} />
+    <LazyImage src={image} styleName={"ListingCard__image"}/>
     <div className="ListingCard__details">
       <div className="ListingCard__top-row">
         <h1>{title}</h1>
