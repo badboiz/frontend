@@ -1,0 +1,14 @@
+.Header {
+  height: 64px;
+  background-color: #eee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px;
+}
+
+.Header h1 {
+  margin: 0;
+}
