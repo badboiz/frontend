@@ -17,6 +17,24 @@
   padding: 14px;
 }
 
-.Header h1 {
-  margin: 0;
+.Header__home-link {
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.Header__home-link, .Header__home-link:visited {
+  color: #FF3D00;
+}
+
+.Header__sell-link {
+  text-decoration: none;
+  color: #FF3D00;
+  border: thin solid #FF3D00;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.Header__sell-link:hover {
+  background-color: #FF3D00;
+  color: white;
 }
