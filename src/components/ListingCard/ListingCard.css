@@ -1,0 +1,71 @@
+.ListingCard__container {
+  position: relative;
+  margin: 0 auto;
+  
+  box-shadow: 0 1px 1px grey;
+  border-radius: 5px;
+ 
+  overflow: hidden;
+  background-color: #eee;
+
+  margin-bottom: 24px;
+}
+
+@media (max-width: 599px) {
+  .ListingCard__container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .ListingCard__container {
+    width: 45%;
+  }
+}
+
+@media (min-width: 900px) {
+  .ListingCard__container {
+    width: 30%;
+  }
+}
+
+.ListingCard__image {
+  width: 100%;
+  padding-top: 75%;
+  background-size: cover;
+
+  opacity: 0;
+  transition: opacity 125ms;
+}
+
+.ListingCard__image.loaded {
+  opacity: 1;
+}
+
+.ListingCard__details {
+  background-color: white;
+  padding: 24px;
+}
+
+.ListingCard__top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ListingCard__top-row * {
+  margin: 0;
+}
+
+.ListingCard__dist {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #ccc;
+}
+
+.ListingCard__price {
+  margin: 0;
+  margin-top: 24px;
+  font-size: 4rem;
+  color: #BF0000;
+}
