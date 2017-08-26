@@ -1,0 +1,16 @@
+.sellForm__title {
+	color: tomato;
+}
+
+#imageInput {
+	display: none;
+}
+
+.photoButton {
+	background: tomato;
+	border: none;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	padding: 16px;
+}

@@ -1,10 +1,15 @@
-const imageInputId = 'imageInput'
-
-export default function getPhoto(callback) {
-	let imageFile = document.getElementById(imageInputId).files[0]
+export function getPhoto(imageFile, callback) {
+	console.log("getting photo")
 	let reader = new FileReader()
-	reader.addEventListener('load', function() {
-		callback(reader.result)
-	}, false)
-	reader.readAsDataURL(imageFile)
+    reader.addEventListener('load', () => {
+			console.log(reader.result)
+			callback(reader.result)
+      
+      //imageBase64 = reader.result
+    }, false)
+    reader.readAsDataURL(imageFile)
+}
+
+export function handleUpload(e) {
+	console.log(e)
 }
