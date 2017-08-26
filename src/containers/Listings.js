@@ -1,23 +1,44 @@
 import React from 'react';
 import ListingCard from '../components/ListingCard/ListingCard';
 import ListingContainer from '../components/ListingContainer/ListingContainer';
+import getListings from '../utils/getListings';
 
-const Listings = ({ listings }) =>
-  <ListingContainer>
-    {listings.map((listing, i) => 
-      <ListingCard key={i} listing={listing} />
-    )}
-  </ListingContainer>;
+const Loading = () =>
+  <h1>Loading...</h1>;
 
-const defaultListing = {
-  distance: "5km away",
-  image: "http://lorempixel.com/400/300",
-  title: "Iphone 7",
-  price: "$329.89"
-};
+const Loaded = ({ listings }) =>
+  listings.length > 0
+    ? listings.map((listing, i) => 
+        <ListingCard key={i} listing={{ ...listing, id: i }} />
+      )
+    : <h1>No listings in your area :(</h1>;
 
-Listings.defaultProps = {
-  listings: new Array(20).fill(defaultListing)
+const Error = () =>
+  <h1>Something went wrong!</h1>;
+
+class Listings extends React.PureComponent {
+  state = { loaded: false, hasError: false };
+
+  componentDidMount() {
+    getListings()
+      .then(listings => this.setState({ listings, loaded: true }))
+      .catch((err) => {
+        console.error('Something went wrong:', err);
+        this.setState({ hasError: true });
+      });
+  }
+
+  render() {
+    return (
+      <ListingContainer>
+        {this.state.loaded
+          ? this.state.hasError
+            ? <Error />
+            : <Loaded listings={this.state.listings} />
+          : <Loading />}
+      </ListingContainer>
+    );
+  }
 }
 
 export default Listings;
