@@ -29,6 +29,16 @@
   }
 }
 
+.ListingCard__overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
 .ListingCard__image {
   width: 100%;
   padding-top: 75%;
@@ -45,6 +55,7 @@
 .ListingCard__details {
   background-color: white;
   padding: 24px;
+  text-align: center;
 }
 
 .ListingCard__top-row {
