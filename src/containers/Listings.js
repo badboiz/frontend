@@ -1,5 +1,5 @@
 import React from 'react';
-import ListingCard from '../components/ListingCard/ListingCard';
+import ListingsCard from '../components/ListingsCard/ListingsCard';
 import ListingContainer from '../components/ListingContainer/ListingContainer';
 import Spinner from '../components/Spinner/Spinner';
 import getListings from '../utils/getListings';
@@ -19,7 +19,7 @@ const ErrorMsg = () =>
   </div>;
 
 class Listings extends React.PureComponent {
-  state = { 
+  state = {
     status: 'needclick'
   };
 
@@ -47,10 +47,10 @@ class Listings extends React.PureComponent {
         Component = Spinner;
         break;
       case 'loaded':
-        Component = () => 
+        Component = () =>
           <ListingContainer>
-            {this.state.listings.map((listing, i) => 
-              <ListingCard key={i} listing={listing} />
+            {this.state.listings.map((listing, i) =>
+              <ListingsCard key={i} listing={listing} />
             )}
           </ListingContainer>
         break;
