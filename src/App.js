@@ -3,8 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import Page from './components/Page/Page';
 import Listing from './containers/Listing';
 import Listings from './containers/Listings';
-import Sell from './containers/Sell'
-import Spinner from './components/Spinner/Spinner';
+import Sell from './containers/Sell';
 import './App.css';
 
 const Home = () =>
