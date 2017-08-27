@@ -1,3 +1,7 @@
 .Page {
-  padding-top: 64px;
+  padding: 64px 14px;
+
+  max-width: 1000px;
+  margin: 0 auto;
+
 }
