@@ -1,41 +1,66 @@
 import React from 'react';
 import ListingCard from '../components/ListingCard/ListingCard';
 import ListingContainer from '../components/ListingContainer/ListingContainer';
+import Spinner from '../components/Spinner/Spinner';
 import getListings from '../utils/getListings';
+import './Listings.css';
 
 const AskToLoad = ({ handleClick }) =>
-  <button onClick={handleClick}>Load listings</button>
+  <div className="Listings__container">
+    <span>Click to see all of the listings in your area:</span>
+    <button className="btn" onClick={handleClick}>Load listings</button>
+  </div>;
 
-const Loaded = ({ listings }) =>
-  listings.length > 0
-    ? listings.map((listing, i) => 
-        <ListingCard key={i} listing={{ ...listing, id: i }} />
-      )
-    : <h1>No listings in your area :(</h1>;
-
-const Error = () =>
-  <h1>Something went wrong!</h1>;
+const ErrorMsg = () =>
+  <div className="Listings__container">
+    <span className="ErrorMsg">
+      Something went wrong! Please reload and try again
+    </span>
+  </div>;
 
 class Listings extends React.PureComponent {
-  state = { loaded: false, hasError: false };
+  state = { 
+    status: 'needclick'
+  };
 
-  handleClick = () =>
-    getListings()
-      .then(listings => this.setState({ listings, loaded: true }))
-      .catch((err) => {
-        console.error('Something went wrong:', err);
-        this.setState({ hasError: true });
-      });
+  handleClick = () => {
+    this.setState({ status: 'loading' }, () =>
+      getListings()
+        .then(listings => this.setState({ listings, status: 'loaded' }))
+        .catch((err) => {
+          console.error('Something went wrong:', err);
+          this.setState({ status: 'haserror' });
+        })
+    );
+  }
 
   render() {
+    let Component;
+
+    console.log(this.state)
+
+    switch (this.state.status) {
+      case 'needclick':
+        Component = () => <AskToLoad handleClick={this.handleClick} />;
+        break;
+      case 'loading':
+        Component = Spinner;
+        break;
+      case 'loaded':
+        Component = () => 
+          <ListingContainer>
+            {this.state.listings.map((listing, i) => 
+              <ListingCard key={i} listing={listing} />
+            )}
+          </ListingContainer>
+        break;
+      default:
+        Component = ErrorMsg;
+        break;
+    }
+
     return (
-      <ListingContainer>
-        {this.state.loaded
-          ? this.state.hasError
-            ? <Error />
-            : <Loaded listings={this.state.listings} />
-          : <AskToLoad handleClick={this.handleClick} />}
-      </ListingContainer>
+      <Component />
     );
   }
 }

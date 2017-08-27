@@ -1,0 +1,11 @@
+.Listings__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Listings__container span {
+  color: #FF3D00;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
