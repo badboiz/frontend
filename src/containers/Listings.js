@@ -3,8 +3,8 @@ import ListingCard from '../components/ListingCard/ListingCard';
 import ListingContainer from '../components/ListingContainer/ListingContainer';
 import getListings from '../utils/getListings';
 
-const Loading = () =>
-  <h1>Loading...</h1>;
+const AskToLoad = ({ handleClick }) =>
+  <button onClick={handleClick}>Load listings</button>
 
 const Loaded = ({ listings }) =>
   listings.length > 0
@@ -19,14 +19,13 @@ const Error = () =>
 class Listings extends React.PureComponent {
   state = { loaded: false, hasError: false };
 
-  componentDidMount() {
+  handleClick = () =>
     getListings()
       .then(listings => this.setState({ listings, loaded: true }))
       .catch((err) => {
         console.error('Something went wrong:', err);
         this.setState({ hasError: true });
       });
-  }
 
   render() {
     return (
@@ -35,7 +34,7 @@ class Listings extends React.PureComponent {
           ? this.state.hasError
             ? <Error />
             : <Loaded listings={this.state.listings} />
-          : <Loading />}
+          : <AskToLoad handleClick={this.handleClick} />}
       </ListingContainer>
     );
   }
