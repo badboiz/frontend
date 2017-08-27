@@ -22,6 +22,17 @@
   font-size: 1.4rem;
 }
 
+.Header__logos {
+  display: flex;
+  align-items: center;
+}
+
+.Header img {
+  height: 2rem;
+  margin-right: 10px;
+  width: auto;
+}
+
 .Header__home-link, .Header__home-link:visited {
   color: #FF3D00;
 }

@@ -13,7 +13,7 @@ const ListingCard = ({ listing: { distance, image, title, price, _id }, styleNam
     <div className="ListingCard__details">
       <div className="ListingCard__top-row">
         <h1>{title}</h1>
-        <div className="ListingCard__dist">{distance}</div>
+        <div className="ListingCard__dist">1 hr remaining</div>
       </div>
       <h2 className="ListingCard__price">${price}</h2>
     </div>
