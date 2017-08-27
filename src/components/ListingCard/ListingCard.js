@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import LazyImage from '../LazyImage/LazyImage';
 import './ListingCard.css';
 
-const ListingCard = ({ listing: { distance, image, title, price } }) =>
+const ListingCard = ({ listing: { distance, image, title, price, id } }) =>
   <div className="ListingCard__container">
     <Link 
       className="ListingCard__overlay" 
-      to="/listing"
+      to={`/listing/${id}`}
     />
     <LazyImage src={image} styleName={"ListingCard__image"}/>
     <div className="ListingCard__details">
