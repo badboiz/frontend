@@ -7,11 +7,17 @@ export default class LazyImage extends React.PureComponent {
   componentDidMount() {
     this.image = new Image();
 
-    this.image.onload = () =>
-      this.setState({ loaded: true });
+    this.image.onload = this.handleImageLoad;
 
     this.image.src = this.props.src;
   }
+
+  componentWillUnmount() {
+    this.handleImageLoad = null;
+  }
+
+  handleImageLoad = () =>
+    this.setState({ loaded: true });
 
   render() {
     const className = `${this.props.styleName || ""} ${this.state.loaded && "loaded"}`;
