@@ -7,18 +7,20 @@ import Sell from './containers/Sell';
 import './App.css';
 
 const Home = () =>
-  <ul> 
-    <li>
-      <Link to="/listings">
-        See all of our listings
-      </Link>
-    </li>
-    <li>
-      <Link to="/sell">
-        Sell an item
-      </Link>
-    </li>
-  </ul>;
+  <div className="Home">
+    <div className="HomeBG" style={{
+      backgroundImage: `url('map.png')`
+    }} /> 
+    <div className="HomeOverlay" />
+    <h1>qwiky</h1>
+    <Link role="button" className="btn" to="/listings">
+      See all of our listings
+    </Link>
+
+    <Link role="button" className="btn" to="/sell">
+      Sell an item
+    </Link>
+  </div>;
 
 class App extends Component {
   render() {

@@ -23,6 +23,7 @@
 	padding: 10px;
 	border: 1px solid #333;
 	border-radius: 5px;
+	background-color: white;
 	margin-bottom: 20px;
 }
 
@@ -30,7 +31,7 @@
 	width: 100%;
 	min-height: 200px;
 	border: thin solid #333;
-	background-color: #EEEEEE;
+	background-color: white;
 	border-radius: 5px;
 
 	display: flex;
