@@ -44,15 +44,22 @@ class Listings extends React.PureComponent {
         Component = () => <AskToLoad handleClick={this.handleClick} />;
         break;
       case 'loading':
-        Component = Spinner;
+        Component = () =>
+          <div className="Listings__container">
+            <Spinner />
+          </div>;
         break;
       case 'loaded':
         Component = () =>
-          <ListingContainer>
-            {this.state.listings.map((listing, i) =>
-              <ListingsCard key={i} listing={listing} />
-            )}
-          </ListingContainer>
+          this.state.listings.length > 0
+          ? <ListingContainer>
+              {this.state.listings.map((listing, i) =>
+                <ListingsCard key={i} listing={listing} />
+              )}
+            </ListingContainer>
+          : <div className="Listings__container">
+              <span>No listings in your area :(</span>
+            </div>;
         break;
       default:
         Component = ErrorMsg;

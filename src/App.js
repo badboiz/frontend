@@ -13,13 +13,15 @@ const Home = () =>
     }} /> 
     <div className="HomeOverlay" />
     <h1>qwiky</h1>
-    <Link role="button" className="btn" to="/listings">
-      See all of our listings
-    </Link>
+    <div>
+      <Link role="button" className="btn" to="/listings">
+        See all of our listings
+      </Link>
 
-    <Link role="button" className="btn" to="/sell">
-      Sell an item
-    </Link>
+      <Link role="button" className="btn" to="/sell">
+        Sell an item
+      </Link>
+    </div>
   </div>;
 
 class App extends Component {
