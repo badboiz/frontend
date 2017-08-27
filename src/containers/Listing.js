@@ -2,6 +2,7 @@ import React from 'react';
 import Spinner from '../components/Spinner/Spinner';
 import ListingCard from '../components/ListingCard/ListingCard';
 import getListing from '../utils/getListing';
+import {initMap, addMapMarker} from '../utils/map';
 import "./Listing.css";
 
 class Listing extends React.PureComponent {
@@ -12,12 +13,18 @@ class Listing extends React.PureComponent {
       .then(([listing]) => {
         console.log(listing)
         this.setState({ listing, loaded: true });
+
       })
       .catch(err => {
         console.error(err);
         this.setState({ hasError: true });
       })
   }
+
+	componentWillMount() {
+		console.log("mounted")
+		setTimeout(() => addMapMarker(this.props.match.params.listingid), 1000)
+	}
 
   render() {
     if (this.state.hasError) {

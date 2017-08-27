@@ -1,33 +1,19 @@
 .ListingCard__container {
   position: relative;
   margin: 0 auto;
-  
+
+	max-width: 600px;
+	width: 100%;
+
   box-shadow: 0 1px 1px grey;
   border-radius: 5px;
- 
+
   overflow: hidden;
   background-color: #eee;
 
   margin-bottom: 24px;
 }
 
-@media (max-width: 599px) {
-  .ListingCard__container {
-    width: 100%;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 899px) {
-  .ListingCard__container {
-    width: 45%;
-  }
-}
-
-@media (min-width: 900px) {
-  .ListingCard__container {
-    width: 30%;
-  }
-}
 
 .ListingCard__overlay {
   display: block;
@@ -55,7 +41,7 @@
 .ListingCard__details {
   background-color: white;
   padding: 24px;
-  text-align: center;
+  text-align: left;
 }
 
 .ListingCard__top-row {
@@ -79,4 +65,10 @@
   margin-top: 24px;
   font-size: 4rem;
   color: #BF0000;
+}
+
+#googlemaps {  /* do not change */
+	margin-top: 24px;
+	height: 400px;
+	width: 100%;
 }
