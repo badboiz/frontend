@@ -6,7 +6,7 @@ import postListing from '../../utils/postListing';
 import geolocator from '../../utils/geolocator';
 import './SellForm.css';
 
-const Done = () => 
+const Done = () =>
   <div className="SellForm__container">
     <span>Thanks!</span>
   </div>;
@@ -22,7 +22,7 @@ class SellForm extends React.PureComponent {
   handleImageChange = (event) => {
     const imageFile = event.target.files[0];
     getPhoto(imageFile, image =>
-       this.setState({ image })
+      this.setState({ image })
     );
   }
 
@@ -46,25 +46,32 @@ class SellForm extends React.PureComponent {
         return (
           <div className="SellForm">
             <h2 className="SellForm__title">Sell an item</h2>
-            <form> 
+            <form>
               <label htmlFor="text-input">Title:</label>
-              <input 
+              <input
                 id="text-input"
-                type="text" 
+                type="text"
                 placeholder="title" onChange={this.handleTyping("title")}
               />
               <label htmlFor="description-input">Description:</label>
-              <input 
+              <input
                 id="description-input"
-                type="text" 
+                type="text"
                 placeholder="description" onChange={this.handleTyping("description")}
               />
               <label htmlFor="price-input">Price:</label>
-              <input 
+              <input
                 id="price-input"
-                type="number" 
+                type="number"
                 placeholder="price" onChange={this.handleTyping("price")}
               />
+
+              <label htmlFor="time-input">Select duration:</label>
+              <select id="time-input">
+                <option value="">1 hour</option>
+                <option value="">2 hours</option>
+                <option value="">3 hours</option>
+              </select>
 
               <div className="SellForm__image-preview-container">
                 {this.state.image && <img className="SellForm__image-preview" src={this.state.image} />}

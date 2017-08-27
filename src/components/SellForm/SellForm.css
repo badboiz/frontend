@@ -19,12 +19,17 @@
 	margin-bottom: 4px;
 }
 
-.SellForm form input {
+.SellForm form input,
+.SellForm form select {
 	padding: 10px;
 	border: 1px solid #333;
 	border-radius: 5px;
 	background-color: white;
 	margin-bottom: 20px;
+}
+
+.SellForm form select {
+	height: 2rem;
 }
 
 .SellForm__image-preview-container {
